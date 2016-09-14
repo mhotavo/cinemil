@@ -1,12 +1,6 @@
 	<title>Cinemil</title>
 	<style>
-		@font-face {
-			font-family: "Track";
-			src: url('<?php echo URL; ?>Views/fonts/Track.otf') format("truetype");
-
-			font-family: "manteka";
-			src: url('<?php echo URL; ?>Views/fonts/manteka.ttf') format("truetype");
-		}
+	
 		.jssorb03 {
 			position: absolute;
 		}
@@ -57,6 +51,9 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo URL; ?>Views/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Carter+One" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/css/general.css">
     <script src="<?php echo URL; ?>Views/js/jquery.min.js"></script>

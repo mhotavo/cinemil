@@ -9,9 +9,9 @@
 				<div class="col-lg-2 well" style="text-align: left;" id="categorias">
 					<h4>Categorias</h4>
 				</div>
-				<div class="col-lg-8"  style="">
+				<div class="col-lg-8"  style="">				
 					<div class="row">
-						<div class="col-lg-12 estrenosBanner" >
+						<div class="estrenosBanner" >
 							Estrenos
 						</div>
 						<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 220px; overflow: hidden; visibility: hidden;">
@@ -42,56 +42,7 @@
 								<div style="display: none;">
 									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
 								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
-								<div style="display: none;">
-									<img data-u="image" src="<?php echo URL; ?>/Views/images/005.jpg" />
-								</div>
 								
-
 							</div>
 							<!-- Bullet Navigator -->
 							<div data-u="navigator" class="jssorb03" style="bottom:10px;right:10px;">
@@ -107,9 +58,10 @@
 					</div>
 					<!-- #endregion Jssor Slider End -->
 					<div class="row">
-						<div class="col-lg-8" >
-							&nbsp;
+					<div class="estrenosBanner" >
+							Peliculas mas valoradas
 						</div>
+				 
 					</div>
 
 					<div class="row">
@@ -144,8 +96,18 @@
 				</div>
 
 				<div class="col-lg-2 ">
-					<div class="well">
-						<p>ADS</p>
+					<div class="">
+						
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- cinemil.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9070965818920845"
+     data-ad-slot="2088257012"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 					</div>
 					<div class="well">
 						<p>ADS</p>
@@ -162,7 +124,7 @@
 				var jssor_1_options = {
 					$AutoPlay: true,
 					$AutoPlaySteps: 4,
-					$SlideDuration: 160,
+					$SlideDuration: 180,
 					$SlideWidth: 160,
 					$SlideSpacing: 3,
 					$Cols: 4,
@@ -183,13 +145,13 @@
             //you can remove responsive code if you don't want the slider scales while window resizing
             function ScaleSlider() {
             	var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-            	if (refSize) {
+            	/*if (refSize) {
             		refSize = Math.min(refSize, 865);
             		jssor_1_slider.$ScaleWidth(refSize);
             	}
             	else {
             		window.setTimeout(ScaleSlider, 30);
-            	}
+            	} */
             }
             ScaleSlider();
             $(window).bind("load", ScaleSlider);

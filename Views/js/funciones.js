@@ -9,7 +9,7 @@ function cargarCategorias(){
 	//$('#categorias').empty();
 
 	$.getJSON('JSON/categoria', function(resp){
-		console.log(resp);
+		//console.log(resp);
 		for (var i in resp) {
 			$("#categorias").append('<p><a href="'+resp[i].ID_CATEGORIA+'">'+resp[i].NOM_CATEGORIA+'</a></p>');
 		}
