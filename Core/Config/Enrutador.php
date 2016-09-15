@@ -24,7 +24,7 @@ class Enrutador
 		if(is_readable($ruta)){
 			require_once $ruta;
 		}else{
-			if ($request->getControlador()!='json') {
+			if ($request->getControlador()!='json' and $request->getControlador()!='login') {
 				#No se encontro la vista
 				$ruta = ROOT . "HTML" . DS . "fail.html";  
 				require_once $ruta;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 15-09-2016 a las 05:40:24
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 7.0.9
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-09-2016 a las 22:54:18
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.5.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -104,6 +104,56 @@ CREATE TABLE `idioma` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `logs`
+--
+
+CREATE TABLE `logs` (
+  `ID` int(11) NOT NULL,
+  `IP` varchar(20) NOT NULL,
+  `USER` int(11) NOT NULL,
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `logs`
+--
+
+INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
+(1, '::1', 1, '2016-09-15 20:40:09'),
+(2, '::1', 1, '2016-09-15 20:40:13'),
+(3, '::1', 1, '2016-09-15 20:40:20'),
+(4, '::1', 1, '2016-09-15 20:40:29'),
+(5, '::1', 1, '2016-09-15 20:40:38'),
+(6, '::1', 1, '2016-09-15 20:40:46'),
+(7, '::1', 1, '2016-09-15 20:42:04'),
+(8, '::1', 1, '2016-09-15 20:42:05'),
+(9, '::1', 1, '2016-09-15 20:42:18'),
+(10, '::1', 1, '2016-09-15 20:42:40'),
+(11, '::1', 1, '2016-09-15 20:44:34'),
+(12, '::1', 1, '2016-09-15 20:45:04'),
+(13, '::1', 1, '2016-09-15 20:45:30'),
+(14, '::1', 1, '2016-09-15 20:46:26'),
+(15, '::1', 1, '2016-09-15 20:47:09'),
+(16, '::1', 1, '2016-09-15 20:47:30'),
+(17, '::1', 1, '2016-09-15 20:47:31'),
+(18, '::1', 1, '2016-09-15 20:47:33'),
+(19, '::1', 1, '2016-09-15 20:52:26'),
+(20, '::1', 1, '2016-09-15 20:52:27'),
+(21, '::1', 1, '2016-09-15 20:52:27'),
+(22, '::1', 1, '2016-09-15 20:52:27'),
+(23, '::1', 1, '2016-09-15 20:52:27'),
+(24, '::1', 1, '2016-09-15 20:52:28'),
+(25, '::1', 1, '2016-09-15 20:52:28'),
+(26, '::1', 1, '2016-09-15 20:52:28'),
+(27, '::1', 1, '2016-09-15 20:52:28'),
+(28, '::1', 1, '2016-09-15 20:52:28'),
+(29, '::1', 1, '2016-09-15 20:52:29'),
+(30, '::1', 1, '2016-09-15 20:52:29'),
+(31, '::1', 1, '2016-09-15 20:53:32');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pais`
 --
 
@@ -184,13 +234,31 @@ CREATE TABLE `servidor` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
-  `ID_USUARIO` int(11) NOT NULL,
-  `NICK_USUARIO` varchar(20) COLLATE latin1_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+CREATE TABLE `usuarios` (
+  `ID` bigint(255) NOT NULL,
+  `USER` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `PASS` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `EMAIL` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `NOMBRES` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `P_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `S_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `GENERO` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `FECHA_REGISTRO` date DEFAULT NULL,
+  `IMAGEN` text COLLATE utf8_unicode_ci,
+  `KEYPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `NEWPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`ID`, `USER`, `PASS`, `EMAIL`, `NOMBRES`, `P_APELLIDO`, `S_APELLIDO`, `GENERO`, `FECHA_REGISTRO`, `IMAGEN`, `KEYPASS`, `NEWPASS`, `ULTIMA_CONEXION`) VALUES
+(1, 'ironman', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '20401-3254avatar.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0);
 
 --
 -- Índices para tablas volcadas
@@ -225,6 +293,13 @@ ALTER TABLE `fuente`
 --
 ALTER TABLE `idioma`
   ADD PRIMARY KEY (`ID_IDIOMA`);
+
+--
+-- Indices de la tabla `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `USER` (`USER`);
 
 --
 -- Indices de la tabla `pais`
@@ -267,10 +342,10 @@ ALTER TABLE `servidor`
   ADD PRIMARY KEY (`ID_SERVIDOR`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID_USUARIO`);
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -297,6 +372,11 @@ ALTER TABLE `enlace`
 ALTER TABLE `idioma`
   MODIFY `ID_IDIOMA` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
 -- AUTO_INCREMENT de la tabla `pais`
 --
 ALTER TABLE `pais`
@@ -317,6 +397,11 @@ ALTER TABLE `resolucion`
 ALTER TABLE `servidor`
   MODIFY `ID_SERVIDOR` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `ID` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -332,8 +417,7 @@ ALTER TABLE `pelicula`
   ADD CONSTRAINT `FK_PAIS` FOREIGN KEY (`PAIS`) REFERENCES `pais` (`ID_PAIS`),
   ADD CONSTRAINT `FK_PRODUCTORA` FOREIGN KEY (`PRODUCTORA`) REFERENCES `productora` (`ID_PRODUCTORA`),
   ADD CONSTRAINT `FK_RESOLUCION` FOREIGN KEY (`RESOLUCION`) REFERENCES `resolucion` (`ID_RESOLUCION`),
-  ADD CONSTRAINT `FK_SERVIDORES` FOREIGN KEY (`SERVIDORES`) REFERENCES `servidor` (`ID_SERVIDOR`),
-  ADD CONSTRAINT `FK_USUARIO` FOREIGN KEY (`USUARIOLOG`) REFERENCES `usuario` (`ID_USUARIO`);
+  ADD CONSTRAINT `FK_SERVIDORES` FOREIGN KEY (`SERVIDORES`) REFERENCES `servidor` (`ID_SERVIDOR`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

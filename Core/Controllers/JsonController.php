@@ -17,8 +17,12 @@ class JsonController{
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
- 
 
+	public function Login(){
+		#listar Salones
+		$datos=$this->Json->login();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
 	
 
 }

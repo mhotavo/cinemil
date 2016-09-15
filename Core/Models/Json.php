@@ -32,8 +32,7 @@ class Json {
 		return $datos;
 	}
 
-
-
+ 
 
 
 } 
