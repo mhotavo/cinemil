@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2016 a las 15:54:21
+-- Tiempo de generación: 19-09-2016 a las 16:04:31
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -149,7 +149,7 @@ CREATE TABLE `logs` (
   `IP` varchar(20) NOT NULL,
   `USER` int(11) NOT NULL,
   `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `logs`
@@ -248,7 +248,7 @@ CREATE TABLE `pelicula` (
   `ENLACES` int(11) NOT NULL,
   `SERVIDORES` int(11) NOT NULL,
   `FUENTE` int(11) NOT NULL,
-  `USUARIOLOG` int(11) NOT NULL,
+  `USUARIOLOG` bigint(255) NOT NULL,
   `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -353,19 +353,19 @@ INSERT INTO `servidor` (`ID_SERVIDOR`, `NOM_SERVIDOR`) VALUES
 
 CREATE TABLE `usuarios` (
   `ID` bigint(255) NOT NULL,
-  `USER` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `PASS` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `EMAIL` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `NOMBRES` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `P_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `S_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `GENERO` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `USER` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `PASS` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `EMAIL` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `NOMBRES` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `P_APELLIDO` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `S_APELLIDO` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `GENERO` varchar(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `FECHA_REGISTRO` date DEFAULT NULL,
-  `IMAGEN` text COLLATE utf8_unicode_ci,
-  `KEYPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `NEWPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IMAGEN` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `KEYPASS` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `NEWPASS` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -540,8 +540,10 @@ ALTER TABLE `pelicula`
   ADD CONSTRAINT `FK_FUENTE` FOREIGN KEY (`FUENTE`) REFERENCES `fuente` (`ID_FUENTE`),
   ADD CONSTRAINT `FK_IDIOMA` FOREIGN KEY (`IDIOMA`) REFERENCES `idioma` (`ID_IDIOMA`),
   ADD CONSTRAINT `FK_PAIS` FOREIGN KEY (`PAIS`) REFERENCES `pais` (`ID_PAIS`),
+  ADD CONSTRAINT `FK_PRODUCTORA` FOREIGN KEY (`PRODUCTORA`) REFERENCES `productora` (`ID_PRODUCTORA`),
   ADD CONSTRAINT `FK_RESOLUCION` FOREIGN KEY (`RESOLUCION`) REFERENCES `resolucion` (`ID_RESOLUCION`),
-  ADD CONSTRAINT `FK_SERVIDORES` FOREIGN KEY (`SERVIDORES`) REFERENCES `servidor` (`ID_SERVIDOR`);
+  ADD CONSTRAINT `FK_SERVIDORES` FOREIGN KEY (`SERVIDORES`) REFERENCES `servidor` (`ID_SERVIDOR`),
+  ADD CONSTRAINT `FK_USUARIO` FOREIGN KEY (`USUARIOLOG`) REFERENCES `usuarios` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
