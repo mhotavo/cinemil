@@ -10,18 +10,18 @@
   		<div class="row">
   			<div class="col-md-2"></div>
   			<div class="col-md-8">
-  				<form class="form-horizontal" enctype="multipart/form-data" method="POST">
+  				<form class="form-horizontal" enctype="multipart/form-data" method="POST" action="admix/agregar">
   					<fieldset>
   						<div class="form-group">
-  							<label for="titulo" class="col-lg-2 control-label">Título Oficial</label>
+  							<label for="tituloOficial" class="col-lg-2 control-label">Título Oficial</label>
   							<div class="col-lg-10">
-  								<input type="text" class="form-control" name="titulo" placeholder="Título Oficial" required>
+  								<input type="text" class="form-control" name="tituloOficial" placeholder="Título Oficial" required>
   							</div>
   						</div>	
   						<div class="form-group">
-  							<label for="titulo" class="col-lg-2 control-label">Título Latino</label>
+  							<label for="tituloLatino" class="col-lg-2 control-label">Título Latino</label>
   							<div class="col-lg-10">
-  								<input type="text" class="form-control" name="titulo" placeholder="Título Latino" required>
+  								<input type="text" class="form-control" name="tituloLatino" placeholder="Título Latino" required>
   							</div>
   						</div>		
   						<div class="form-group">
