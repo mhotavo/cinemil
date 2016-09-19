@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-09-2016 a las 22:54:18
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.5.34
+-- Tiempo de generación: 19-09-2016 a las 03:23:34
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,8 +28,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `calidad` (
   `ID_CALIDAD` int(11) NOT NULL,
-  `NOM_CALIDAD` int(11) NOT NULL
+  `NOM_CALIDAD` varchar(11) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `calidad`
+--
+
+INSERT INTO `calidad` (`ID_CALIDAD`, `NOM_CALIDAD`) VALUES
+(1, 'DVDRip');
 
 -- --------------------------------------------------------
 
@@ -149,7 +156,11 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 (28, '::1', 1, '2016-09-15 20:52:28'),
 (29, '::1', 1, '2016-09-15 20:52:29'),
 (30, '::1', 1, '2016-09-15 20:52:29'),
-(31, '::1', 1, '2016-09-15 20:53:32');
+(31, '::1', 1, '2016-09-15 20:53:32'),
+(32, '::1', 1, '2016-09-18 15:09:15'),
+(33, '::1', 1, '2016-09-18 15:09:46'),
+(34, '::1', 1, '2016-09-18 15:12:11'),
+(35, '::1', 1, '2016-09-18 19:19:43');
 
 -- --------------------------------------------------------
 
@@ -170,13 +181,12 @@ CREATE TABLE `pais` (
 
 CREATE TABLE `pelicula` (
   `ID` int(11) NOT NULL,
-  `TITULO` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `TITULO_OFICIAL` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `TITULO_LATINO` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `DIRECTOR` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `REPARTO` text COLLATE utf8_spanish_ci,
   `PRODUCTORA` int(11) NOT NULL,
   `SINOPSIS` text COLLATE utf8_spanish_ci NOT NULL,
-  `TITULO_OFICIAL` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `TITULO_LATINO` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CATEGORIAS` int(11) NOT NULL,
   `PAIS` int(11) NOT NULL,
   `DURACION` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -355,7 +365,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `calidad`
 --
 ALTER TABLE `calidad`
-  MODIFY `ID_CALIDAD` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CALIDAD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
@@ -375,7 +385,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT de la tabla `pais`
 --

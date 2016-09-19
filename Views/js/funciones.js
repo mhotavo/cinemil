@@ -1,9 +1,13 @@
+function __(id){
+	return document.getElementById(id);
+}
 function DeleteItem(contenido, url){
 	var action= window.confirm(contenido);
 	if (action) {
 		window.location=url;
 	}
 }
+
 
 function cargarCategorias(){
 	//$('#categorias').empty();
@@ -19,18 +23,6 @@ function cargarCategorias(){
 }
 
 
-
-
-
-
-function cargarProfesores(){
-	$.getJSON('../asignar/listarProfesores', function(resp){
-		//console.log(resp);
-		$.each( resp, function(key,value) {
-			$("#profesor").append('<option value='+value.id+'>'+value.nombre+'</option>');
-		});
-	})
-}
 
 
 

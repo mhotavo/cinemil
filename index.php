@@ -1,5 +1,7 @@
 <?php  
 
+session_start();
+
 #Constantes de la conexion 
 define('DB_HOST', 'localhost');  #host
 define('DB_USER', 'root'); #Usuario
@@ -9,7 +11,7 @@ define('DB_NAME', 'cinemil'); #nombre de la base de datos
 #Constantes app
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
-define('URL', "http://localhost/Cinemil/");  # La carpeta de la aplicacion debe llamarse 'colegio'
+define('URL', "http://localhost/Cinemil/");
 define('HTML_DIR', 'HTML/');
 
 require_once "Core/Models/Conexion.php";

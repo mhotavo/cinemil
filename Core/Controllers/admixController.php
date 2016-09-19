@@ -13,9 +13,9 @@ class AdmixController{
 
 	public function panel(){
 		if (!empty($_SESSION['app_id'])) {
-			echo 	$_SESSION['app_id'];
+			//echo 	$_SESSION['app_id'];
 		} else {
-			echo 	$_SESSION['app_id'];
+			//echo 	$_SESSION['app_id'];
 				//header("Location:" . URL . "index");
 		}
 	}
