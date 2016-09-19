@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2016 a las 03:23:34
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Tiempo de generación: 19-09-2016 a las 15:54:21
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `calidad` (
   `ID_CALIDAD` int(11) NOT NULL,
-  `NOM_CALIDAD` varchar(11) COLLATE utf8_spanish_ci NOT NULL
+  `NOM_CALIDAD` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -36,42 +36,16 @@ CREATE TABLE `calidad` (
 --
 
 INSERT INTO `calidad` (`ID_CALIDAD`, `NOM_CALIDAD`) VALUES
-(1, 'DVDRip');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoria`
---
-
-CREATE TABLE `categoria` (
-  `ID_CATEGORIA` int(11) NOT NULL,
-  `NOM_CATEGORIA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `categoria` (`ID_CATEGORIA`, `NOM_CATEGORIA`) VALUES
-(1, 'Acción'),
-(2, 'Animación'),
-(3, 'Documental'),
-(4, 'Fantástico'),
-(5, 'Infantil'),
-(6, 'Musical'),
-(7, 'Romance'),
-(8, 'Zombies'),
-(9, 'Terror'),
-(10, 'Horror'),
-(11, 'Suspenso'),
-(12, 'Drama'),
-(13, 'Deporte'),
-(14, 'Comedia'),
-(15, 'Ciencia Ficcion'),
-(16, 'Aventura'),
-(17, 'Anime'),
-(18, '+18');
+(1, 'DVDrip'),
+(2, 'WEBrip'),
+(3, 'BRrip'),
+(4, 'Cam'),
+(5, 'TS-HQ'),
+(6, 'DVD-Screener'),
+(7, 'Blu-Ray'),
+(8, 'WEB-DL'),
+(9, 'R5'),
+(10, 'R6');
 
 -- --------------------------------------------------------
 
@@ -97,6 +71,54 @@ CREATE TABLE `fuente` (
   `NOM_FUENTE` varchar(20) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Volcado de datos para la tabla `fuente`
+--
+
+INSERT INTO `fuente` (`ID_FUENTE`, `NOM_FUENTE`) VALUES
+(6, 'Cinecalidad.com'),
+(2, 'Hackstore.net'),
+(5, 'Inkapelis.com'),
+(7, 'Intermoviez.org'),
+(4, 'Maspeliculas.cc'),
+(3, 'Mega-dvdrip.com'),
+(1, 'Repelis.tv');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `genero`
+--
+
+CREATE TABLE `genero` (
+  `ID_CATEGORIA` int(11) NOT NULL,
+  `NOM_CATEGORIA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `genero`
+--
+
+INSERT INTO `genero` (`ID_CATEGORIA`, `NOM_CATEGORIA`) VALUES
+(1, 'Acción'),
+(2, 'Animación'),
+(3, 'Documental'),
+(4, 'Fantástico'),
+(5, 'Infantil'),
+(6, 'Musical'),
+(7, 'Romance'),
+(8, 'Zombies'),
+(9, 'Terror'),
+(10, 'Horror'),
+(11, 'Suspenso'),
+(12, 'Drama'),
+(13, 'Deporte'),
+(14, 'Comedia'),
+(15, 'Ciencia Ficcion'),
+(16, 'Aventura'),
+(17, 'Anime'),
+(18, '+18');
+
 -- --------------------------------------------------------
 
 --
@@ -107,6 +129,14 @@ CREATE TABLE `idioma` (
   `ID_IDIOMA` int(11) NOT NULL,
   `NOM_IDIOMA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `idioma`
+--
+
+INSERT INTO `idioma` (`ID_IDIOMA`, `NOM_IDIOMA`) VALUES
+(1, 'Español'),
+(2, 'Inglés ');
 
 -- --------------------------------------------------------
 
@@ -173,6 +203,20 @@ CREATE TABLE `pais` (
   `NOM_PAIS` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `pais`
+--
+
+INSERT INTO `pais` (`ID_PAIS`, `NOM_PAIS`) VALUES
+(1, 'USA'),
+(2, 'España'),
+(3, 'Rusia'),
+(4, 'Francia'),
+(5, 'Argentina'),
+(6, 'Colombia'),
+(7, 'Italia'),
+(8, 'Alemania');
+
 -- --------------------------------------------------------
 
 --
@@ -187,7 +231,7 @@ CREATE TABLE `pelicula` (
   `REPARTO` text COLLATE utf8_spanish_ci,
   `PRODUCTORA` int(11) NOT NULL,
   `SINOPSIS` text COLLATE utf8_spanish_ci NOT NULL,
-  `CATEGORIAS` int(11) NOT NULL,
+  `GENERO` int(11) NOT NULL,
   `PAIS` int(11) NOT NULL,
   `DURACION` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `FECHA_ESTRENO` date NOT NULL,
@@ -219,6 +263,43 @@ CREATE TABLE `productora` (
   `NOM_PRODUCTORA` varchar(50) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Volcado de datos para la tabla `productora`
+--
+
+INSERT INTO `productora` (`ID_PRODUCTORA`, `NOM_PRODUCTORA`) VALUES
+(1, 'Fox Entertainment Group'),
+(2, 'Fox International Channels'),
+(3, 'Películas de 20th Century Fox Home Entertainment'),
+(4, 'Pixar'),
+(5, 'Troma Entertainment'),
+(6, 'Warner Bros'),
+(7, '1492 Pictures'),
+(8, 'Imagine Entertainment'),
+(9, 'Rooster Teeth'),
+(10, 'American International Pictures'),
+(11, 'Legendary Entertainment'),
+(12, 'Keystone Studios'),
+(13, 'Sony Pictures Entertainment'),
+(14, 'Syncopy Films'),
+(15, '20th Century Fox'),
+(16, 'Hollywood Pictures'),
+(17, 'MTV Films'),
+(18, 'Paramount Animation'),
+(19, 'Paramount Pictures'),
+(20, 'Paramount Vantage'),
+(21, 'Plan B Entertainment'),
+(22, 'Republic Pictures'),
+(23, 'Walt Disney Pictures'),
+(24, 'WWE Studios'),
+(25, 'Universal Studios'),
+(26, 'Touchstone Pictures'),
+(27, 'New Line Cinema'),
+(28, 'Touchtones Home Entretainment'),
+(29, 'DreanWorks Pictures'),
+(30, 'Columbia Pictures'),
+(31, 'Universal Pictures');
+
 -- --------------------------------------------------------
 
 --
@@ -230,6 +311,14 @@ CREATE TABLE `resolucion` (
   `NOM_RESOLUCION` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `resolucion`
+--
+
+INSERT INTO `resolucion` (`ID_RESOLUCION`, `NOM_RESOLUCION`) VALUES
+(1, '720p'),
+(2, '1080p');
+
 -- --------------------------------------------------------
 
 --
@@ -238,8 +327,23 @@ CREATE TABLE `resolucion` (
 
 CREATE TABLE `servidor` (
   `ID_SERVIDOR` int(11) NOT NULL,
-  `NOM_SERVIDOR` int(11) NOT NULL
+  `NOM_SERVIDOR` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `servidor`
+--
+
+INSERT INTO `servidor` (`ID_SERVIDOR`, `NOM_SERVIDOR`) VALUES
+(1, 'Filecloud.io'),
+(2, 'MEGA.nz'),
+(3, '4Shared.com'),
+(4, '1Fichier.com'),
+(5, 'Uptobox.com'),
+(6, 'MediaFire.com'),
+(7, 'Openload.co'),
+(8, 'Netu.Tv'),
+(9, ' Nowvideo.sx');
 
 -- --------------------------------------------------------
 
@@ -281,12 +385,6 @@ ALTER TABLE `calidad`
   ADD PRIMARY KEY (`ID_CALIDAD`);
 
 --
--- Indices de la tabla `categoria`
---
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`ID_CATEGORIA`);
-
---
 -- Indices de la tabla `enlace`
 --
 ALTER TABLE `enlace`
@@ -296,7 +394,14 @@ ALTER TABLE `enlace`
 -- Indices de la tabla `fuente`
 --
 ALTER TABLE `fuente`
-  ADD PRIMARY KEY (`ID_FUENTE`);
+  ADD PRIMARY KEY (`ID_FUENTE`),
+  ADD KEY `NOM_FUENTE` (`NOM_FUENTE`);
+
+--
+-- Indices de la tabla `genero`
+--
+ALTER TABLE `genero`
+  ADD PRIMARY KEY (`ID_CATEGORIA`);
 
 --
 -- Indices de la tabla `idioma`
@@ -322,8 +427,8 @@ ALTER TABLE `pais`
 --
 ALTER TABLE `pelicula`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `PRODUCTORA` (`PRODUCTORA`,`CATEGORIAS`,`PAIS`,`IDIOMA`,`CALIDAD`,`RESOLUCION`,`USUARIOLOG`),
-  ADD KEY `FK_CATEGORIA` (`CATEGORIAS`),
+  ADD KEY `PRODUCTORA` (`PRODUCTORA`,`GENERO`,`PAIS`,`IDIOMA`,`CALIDAD`,`RESOLUCION`,`USUARIOLOG`),
+  ADD KEY `FK_CATEGORIA` (`GENERO`),
   ADD KEY `FK_PAIS` (`PAIS`),
   ADD KEY `FK_IDIOMA` (`IDIOMA`),
   ADD KEY `FK_CALIDAD` (`CALIDAD`),
@@ -365,22 +470,27 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `calidad`
 --
 ALTER TABLE `calidad`
-  MODIFY `ID_CALIDAD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `categoria`
---
-ALTER TABLE `categoria`
-  MODIFY `ID_CATEGORIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_CALIDAD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `enlace`
 --
 ALTER TABLE `enlace`
   MODIFY `ID_ENLACE` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `fuente`
+--
+ALTER TABLE `fuente`
+  MODIFY `ID_FUENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `genero`
+--
+ALTER TABLE `genero`
+  MODIFY `ID_CATEGORIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
 -- AUTO_INCREMENT de la tabla `idioma`
 --
 ALTER TABLE `idioma`
-  MODIFY `ID_IDIOMA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_IDIOMA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `logs`
 --
@@ -390,22 +500,27 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT de la tabla `pais`
 --
 ALTER TABLE `pais`
-  MODIFY `ID_PAIS` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `productora`
+--
+ALTER TABLE `productora`
+  MODIFY `ID_PRODUCTORA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
 -- AUTO_INCREMENT de la tabla `resolucion`
 --
 ALTER TABLE `resolucion`
-  MODIFY `ID_RESOLUCION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_RESOLUCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `servidor`
 --
 ALTER TABLE `servidor`
-  MODIFY `ID_SERVIDOR` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_SERVIDOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
@@ -420,12 +535,11 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `pelicula`
   ADD CONSTRAINT `FK_CALIDAD` FOREIGN KEY (`CALIDAD`) REFERENCES `calidad` (`ID_CALIDAD`),
-  ADD CONSTRAINT `FK_CATEGORIA` FOREIGN KEY (`CATEGORIAS`) REFERENCES `categoria` (`ID_CATEGORIA`),
+  ADD CONSTRAINT `FK_CATEGORIA` FOREIGN KEY (`GENERO`) REFERENCES `genero` (`ID_CATEGORIA`),
   ADD CONSTRAINT `FK_ENLACES` FOREIGN KEY (`ENLACES`) REFERENCES `enlace` (`ID_ENLACE`),
   ADD CONSTRAINT `FK_FUENTE` FOREIGN KEY (`FUENTE`) REFERENCES `fuente` (`ID_FUENTE`),
   ADD CONSTRAINT `FK_IDIOMA` FOREIGN KEY (`IDIOMA`) REFERENCES `idioma` (`ID_IDIOMA`),
   ADD CONSTRAINT `FK_PAIS` FOREIGN KEY (`PAIS`) REFERENCES `pais` (`ID_PAIS`),
-  ADD CONSTRAINT `FK_PRODUCTORA` FOREIGN KEY (`PRODUCTORA`) REFERENCES `productora` (`ID_PRODUCTORA`),
   ADD CONSTRAINT `FK_RESOLUCION` FOREIGN KEY (`RESOLUCION`) REFERENCES `resolucion` (`ID_RESOLUCION`),
   ADD CONSTRAINT `FK_SERVIDORES` FOREIGN KEY (`SERVIDORES`) REFERENCES `servidor` (`ID_SERVIDOR`);
 
