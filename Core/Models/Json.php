@@ -32,7 +32,25 @@ class Json {
 		return $datos;
 	}
 
- 
+	public function productora(){
+		$sql="SELECT * FROM productora ORDER BY NOM_PRODUCTORA ASC";
+		$data = $this->db->consultaRetorno($sql);
+		while ($row = mysqli_fetch_assoc($data)) {
+			$datos[]=$row;
+		}
+		return $datos;
+	}
+
+
+	public function genero(){
+		$sql="SELECT * FROM genero ORDER BY NOM_GENERO ASC";
+		$data = $this->db->consultaRetorno($sql);
+		while ($row = mysqli_fetch_assoc($data)) {
+			$datos[]=$row;
+		}
+		return $datos;
+	}
+
 
 
 } 

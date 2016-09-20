@@ -12,14 +12,23 @@ class JsonController{
 	}
 
 	public function Categoria(){
-		#listar Salones
 		$datos=$this->Json->categoria();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function Productora(){
+		$datos=$this->Json->productora();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+
+	public function Genero(){
+		$datos=$this->Json->genero();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
 
 	public function Login(){
-		#listar Salones
 		$datos=$this->Json->login();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}

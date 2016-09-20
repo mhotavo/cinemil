@@ -1,6 +1,6 @@
 <?php namespace Core\Models;
 
-	class Profesor {
+	class Pelicula {
 		private $id;
 		private $tituloOficial;
 		private $tituloLatino;
@@ -49,54 +49,106 @@
  
 
 		public function listar(){
-			$sql="SELECT * FROM profesores";
+			$sql="SELECT * FROM pelicula";
 			$datos=$this->db->consultaRetorno($sql);
 			return $datos;
 		}
 
 		public function add(){
-			$sql="INSERT INTO profesores
-					(DOCUMENTO,
-					 NOMBRES,
-					 PRIMER_APELLIDO, 
-					 SEGUNDO_APELLIDO, 
-					 TELEFONO, 
-					 EMAIL, 
-					 IMAGEN) 
+			echo $sql="INSERT INTO pelicula
+					(ID,
+					 TITULO_OFICIAL,
+					 TITULO_LATINO, 
+					 DIRECTOR, 
+					 REPARTO, 
+					 PRODUCTORA, 
+					 SINOPSIS, 
+					 GENERO, 
+					 PAIS, 
+					 DURACION, 
+					 FECHA_ESTRENO, 
+					 IDIOMA, 
+					 SUBTITULOS, 
+					 CALIDAD, 
+					 PESO, 
+					 RESOLUCION, 
+					 TRAILER, 
+					 PORTADA, 
+					 CAPTURAS, 
+					 CLASIFICACION, 
+					 VALORACION, 
+					 ENLACES, 
+					 SERVIDORES, 
+					 FUENTE, 
+					 USUARIOLOG) 
 				VALUES 
 					(NULL, 
-					'{$this->nombres}', 
-					'{$this->primerApellido}', 
-					'{$this->segundoApellido}', 
-					'{$this->telefono}', 
-					'{$this->email}', 
-					'{$this->imagen}'); ";
+					'{$this->tituloOficial}', 
+					'{$this->tituloLatino}', 
+					'{$this->director}', 
+					'{$this->reparto}', 
+					'{$this->productora}', 
+					'{$this->sinopsis}', 
+					'{$this->genero}', 
+					'{$this->pais}', 
+					'{$this->duracion}', 
+					'{$this->fechaEstreno}', 
+					'{$this->idioma}', 
+					'{$this->subtitulos}', 
+					'{$this->calidad}', 
+					'{$this->peso}', 
+					'{$this->resolucion}', 
+					'{$this->trailer}', 
+					'{$this->portada}', 
+					'{$this->capturas}', 
+					'{$this->clasificacion}', 
+					'{$this->valoracion}', 
+					'{$this->enlaces}', 
+					'{$this->servidores}', 
+					'{$this->fuente}', 
+					'{$this->usuario}'); "; exit();
 			$this->db->consultaSimple($sql);
 
 		}
 
 		public function delete(){
-			$sql="DELETE FROM profesor_salon WHERE ID_PROFESOR='{$this->documento}'";
+			$sql="DELETE FROM pelicula WHERE ID='{$this->id}'";
 			$this->db->consultaSimple($sql);			
-			$sql="DELETE FROM profesores WHERE DOCUMENTO='{$this->documento}'";
-			$this->db->consultaSimple($sql);
 
 		}
 
 		 public function edit() {
-		       $sql="UPDATE profesores SET 
-		            NOMBRES='{$this->nombres}',
-		            PRIMER_APELLIDO ='{$this->primerApellido}',
-		            SEGUNDO_APELLIDO ='{$this->segundoApellido}',
-		            TELEFONO ='{$this->telefono}',
-		            EMAIL ='{$this->email}',
-		            IMAGEN ='{$this->imagen}'
-		            WHERE DOCUMENTO='{$this->documento}';";
+		       $sql="UPDATE pelicula SET 
+		            TITULO_OFICIAL='{$this->tituloOficial}',
+		            TITULO_LATINO ='{$this->tituloLatino}',
+		            DIRECTOR ='{$this->director}',
+		            REPARTO ='{$this->reparto}',
+		            PRODUCTORA ='{$this->productora}',
+		            SINOPSIS ='{$this->sinopsis}',
+		            GENERO ='{$this->genero}',
+		            PAIS ='{$this->pais}',
+		            DURACION ='{$this->duracion}',
+		            FECHA_ESTRENO ='{$this->fechaEstreno}',
+		            IDIOMA ='{$this->idioma}',
+		            SUBTITULOS ='{$this->subtitulos}',
+		            CALIDAD ='{$this->calidad}',
+		            PESO ='{$this->peso}',
+		            RESOLUCION ='{$this->resolucion}',
+		            TRAILER ='{$this->trailer}',
+		            PORTADA ='{$this->portada}',
+		            CAPTURAS ='{$this->capturas}',
+		            CLASIFICACION ='{$this->clasificacion}',
+		            VALORACION ='{$this->valoracion}',
+		            ENLACES ='{$this->enlaces}',
+		            SERVIDORES ='{$this->servidores}',
+		            FUENTE ='{$this->fuente}',
+		            USUARIOLOG ='{$this->usuario}'
+		            WHERE ID='{$this->id}';";
 		       $this->db->consultaSimple($sql);
 		  }
 
 		 public function view(){
-			$sql="SELECT * FROM profesores WHERE DOCUMENTO='{$this->documento}'";
+			$sql="SELECT * FROM pelicula WHERE ID='{$this->ID}'";
 			$datos = $this->db->consultaRetorno($sql);
 			$row = mysqli_fetch_assoc($datos);
 			return $row;

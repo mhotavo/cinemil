@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2016 a las 16:04:31
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 7.0.9
+-- Tiempo de generación: 20-09-2016 a las 05:55:19
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -91,15 +91,15 @@ INSERT INTO `fuente` (`ID_FUENTE`, `NOM_FUENTE`) VALUES
 --
 
 CREATE TABLE `genero` (
-  `ID_CATEGORIA` int(11) NOT NULL,
-  `NOM_CATEGORIA` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `ID_GENERO` int(11) NOT NULL,
+  `NOM_GENERO` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `genero`
 --
 
-INSERT INTO `genero` (`ID_CATEGORIA`, `NOM_CATEGORIA`) VALUES
+INSERT INTO `genero` (`ID_GENERO`, `NOM_GENERO`) VALUES
 (1, 'Acción'),
 (2, 'Animación'),
 (3, 'Documental'),
@@ -190,7 +190,11 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 (32, '::1', 1, '2016-09-18 15:09:15'),
 (33, '::1', 1, '2016-09-18 15:09:46'),
 (34, '::1', 1, '2016-09-18 15:12:11'),
-(35, '::1', 1, '2016-09-18 19:19:43');
+(35, '::1', 1, '2016-09-18 19:19:43'),
+(36, '::1', 1, '2016-09-19 20:25:08'),
+(37, '::1', 1, '2016-09-20 02:34:49'),
+(38, '::1', 1, '2016-09-20 02:41:59'),
+(39, '::1', 1, '2016-09-20 02:42:21');
 
 -- --------------------------------------------------------
 
@@ -401,7 +405,7 @@ ALTER TABLE `fuente`
 -- Indices de la tabla `genero`
 --
 ALTER TABLE `genero`
-  ADD PRIMARY KEY (`ID_CATEGORIA`);
+  ADD PRIMARY KEY (`ID_GENERO`);
 
 --
 -- Indices de la tabla `idioma`
@@ -485,7 +489,7 @@ ALTER TABLE `fuente`
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `ID_CATEGORIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_GENERO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `idioma`
 --
@@ -495,7 +499,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `pais`
 --
@@ -505,7 +509,7 @@ ALTER TABLE `pais`
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `productora`
 --
@@ -535,7 +539,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `pelicula`
   ADD CONSTRAINT `FK_CALIDAD` FOREIGN KEY (`CALIDAD`) REFERENCES `calidad` (`ID_CALIDAD`),
-  ADD CONSTRAINT `FK_CATEGORIA` FOREIGN KEY (`GENERO`) REFERENCES `genero` (`ID_CATEGORIA`),
+  ADD CONSTRAINT `FK_CATEGORIA` FOREIGN KEY (`GENERO`) REFERENCES `genero` (`ID_GENERO`),
   ADD CONSTRAINT `FK_ENLACES` FOREIGN KEY (`ENLACES`) REFERENCES `enlace` (`ID_ENLACE`),
   ADD CONSTRAINT `FK_FUENTE` FOREIGN KEY (`FUENTE`) REFERENCES `fuente` (`ID_FUENTE`),
   ADD CONSTRAINT `FK_IDIOMA` FOREIGN KEY (`IDIOMA`) REFERENCES `idioma` (`ID_IDIOMA`),

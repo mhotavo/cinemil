@@ -18,11 +18,32 @@ function cargarCategorias(){
 			$("#categorias").append('<p><a href="'+resp[i].ID_CATEGORIA+'">'+resp[i].NOM_CATEGORIA+'</a></p>');
 		}
 	}).error(function(e){
-		$("#resultado").append('<br><div class="alert alert-info">  <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No hay salones disponibles</strong> para el profesor seleccionado. </div>');
+		console.log("Error al cargar las categorias.");
 	})
 }
 
 
+function cargarProductoras(){
+	//$('#productora').empty();
+	$.getJSON('../JSON/productora', function(resp){
+		//console.log(resp);
+		for (var i in resp) {
+			$("#productora").append('<option value="'+resp[i].ID_PRODUCTORA+'" >'+resp[i].NOM_PRODUCTORA+'</option>');
+		}
+	}).error(function(e){
+		console.log("Error al cargar las productoras.");
+	})
+}
 
-
+function cargarGeneros(){
+	//$('#productora').empty();
+	$.getJSON('../JSON/genero', function(resp){
+		//console.log(resp);
+		for (var i in resp) {
+			$("#genero").append('<option value="'+resp[i].ID_GENERO+'" >'+resp[i].NOM_GENERO+'</option>');
+		}
+	}).error(function(e){
+		console.log("Error al cargar los generos.");
+	})
+}
 

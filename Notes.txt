@@ -31,9 +31,10 @@ Fuentes
 2.repelis.tv
 3.mega-dvdrip.com
 4.maspeliculas.cc
-5.http://www.inkapelis.com/
-6. http://www.cinecalidad.com/
-7. http://www.intermoviez.org/
+5.inkapelis.com
+6.cinecalidad.com
+7.intermoviez.org
+8.http://www.pelisplus.tv/
 
 #####################################
 

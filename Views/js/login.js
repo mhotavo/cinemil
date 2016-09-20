@@ -15,7 +15,7 @@ function goLogin(){
 				result+='<p><strong>Espera un momento por favor.</strong></p>';
 				result+=' </div>';  
 				__('_AJAX_LOGIN_').innerHTML = result;	 
-				window.location='admix/panel';
+				window.location='admix/listar';
 				//location.reload();
 			}else {
 			__('_AJAX_LOGIN_').innerHTML = connect.responseText;
