@@ -47,3 +47,50 @@ function cargarGeneros(){
 	})
 }
 
+function cargarPaises(){
+	//$('#productora').empty();
+	$.getJSON('../JSON/pais', function(resp){
+		//console.log(resp);
+		for (var i in resp) {
+			$("#pais").append('<option value="'+resp[i].ID_PAIS+'" >'+resp[i].NOM_PAIS+'</option>');
+		}
+	}).error(function(e){
+		console.log("Error al cargar los paises.");
+	})
+}
+
+function cargarIdiomas(){
+	//$('#productora').empty();
+	$.getJSON('../JSON/idioma', function(resp){
+		//console.log(resp);
+		for (var i in resp) {
+			$("#idioma").append('<option value="'+resp[i].ID_IDIOMA+'" >'+resp[i].NOM_IDIOMA+'</option>');
+		}
+	}).error(function(e){
+		console.log("Error al cargar los idiomas.");
+	})
+}
+
+function cargarFuentes(){
+	//$('#productora').empty();
+	$.getJSON('../JSON/fuente', function(resp){
+		//console.log(resp);
+		for (var i in resp) {
+			$("#fuente").append('<option value="'+resp[i].ID_FUENTE+'" >'+resp[i].NOM_FUENTE+'</option>');
+		}
+	}).error(function(e){
+		console.log("Error al cargar los fuentes.");
+	})
+}
+
+function cargarServidores(){
+	//$('#productora').empty();
+	$.getJSON('../JSON/servidor', function(resp){
+		//console.log(resp);
+		for (var i in resp) {
+			$("#servidor").append('<option value="'+resp[i].ID_SERVIDOR+'" >'+resp[i].NOM_SERVIDOR+'</option>');
+		}
+	}).error(function(e){
+		console.log("Error al cargar los servidores.");
+	})
+}

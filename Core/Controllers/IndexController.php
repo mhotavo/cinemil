@@ -2,7 +2,7 @@
 
 class IndexController{
 
-		public function index(){
+	public function index(){
 
 	}
 

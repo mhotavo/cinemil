@@ -27,13 +27,33 @@ class JsonController{
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
-
-	public function Login(){
-		$datos=$this->Json->login();
+	public function Pais(){
+		$datos=$this->Json->pais();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
-	
 
+	public function Idioma(){
+		$datos=$this->Json->idioma();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function Fuente(){
+		$datos=$this->Json->fuente();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function Servidor(){
+		if (isset($_GET['servidor']) && !empty($_GET['servidor'])) {
+			$this->Json->__set('id', $_GET['servidor']);
+			$datos=$this->Json->nomServidor();
+			echo $datos;
+		} else {
+			$datos=$this->Json->servidor();
+			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );			
+		}
+	}
+
+	
 }
 
 $Salones= new JsonController();

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2016 a las 05:55:19
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Tiempo de generación: 20-09-2016 a las 23:41:52
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -56,7 +56,8 @@ INSERT INTO `calidad` (`ID_CALIDAD`, `NOM_CALIDAD`) VALUES
 CREATE TABLE `enlace` (
   `ID_ENLACE` int(11) NOT NULL,
   `TIPO_ENLACE` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `SERVIDOR` int(11) NOT NULL,
+  `ID_PELICULA` int(11) NOT NULL,
+  `ID_SERVIDOR` int(11) NOT NULL,
   `ENLACE` varchar(70) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -194,7 +195,9 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 (36, '::1', 1, '2016-09-19 20:25:08'),
 (37, '::1', 1, '2016-09-20 02:34:49'),
 (38, '::1', 1, '2016-09-20 02:41:59'),
-(39, '::1', 1, '2016-09-20 02:42:21');
+(39, '::1', 1, '2016-09-20 02:42:21'),
+(40, '::1', 1, '2016-09-20 14:33:36'),
+(41, '::1', 1, '2016-09-20 14:57:50');
 
 -- --------------------------------------------------------
 
@@ -250,7 +253,6 @@ CREATE TABLE `pelicula` (
   `CLASIFICACION` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `VALORACION` int(5) DEFAULT NULL,
   `ENLACES` int(11) NOT NULL,
-  `SERVIDORES` int(11) NOT NULL,
   `FUENTE` int(11) NOT NULL,
   `USUARIOLOG` bigint(255) NOT NULL,
   `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -392,7 +394,9 @@ ALTER TABLE `calidad`
 -- Indices de la tabla `enlace`
 --
 ALTER TABLE `enlace`
-  ADD PRIMARY KEY (`ID_ENLACE`);
+  ADD PRIMARY KEY (`ID_ENLACE`),
+  ADD KEY `ID_PELICULA` (`ID_PELICULA`),
+  ADD KEY `ID_SERVIDOR` (`ID_SERVIDOR`);
 
 --
 -- Indices de la tabla `fuente`
@@ -437,8 +441,7 @@ ALTER TABLE `pelicula`
   ADD KEY `FK_IDIOMA` (`IDIOMA`),
   ADD KEY `FK_CALIDAD` (`CALIDAD`),
   ADD KEY `FK_RESOLUCION` (`RESOLUCION`),
-  ADD KEY `ENLACES` (`ENLACES`,`SERVIDORES`,`FUENTE`),
-  ADD KEY `FK_SERVIDORES` (`SERVIDORES`),
+  ADD KEY `ENLACES` (`ENLACES`,`FUENTE`),
   ADD KEY `FK_FUENTE` (`FUENTE`),
   ADD KEY `FK_USUARIO` (`USUARIOLOG`);
 
@@ -499,7 +502,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `pais`
 --
@@ -535,6 +538,13 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Filtros para la tabla `enlace`
+--
+ALTER TABLE `enlace`
+  ADD CONSTRAINT `FK_PELICULA` FOREIGN KEY (`ID_PELICULA`) REFERENCES `pelicula` (`ID`),
+  ADD CONSTRAINT `FK_SERVIDOR` FOREIGN KEY (`ID_SERVIDOR`) REFERENCES `servidor` (`ID_SERVIDOR`);
+
+--
 -- Filtros para la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
@@ -546,7 +556,6 @@ ALTER TABLE `pelicula`
   ADD CONSTRAINT `FK_PAIS` FOREIGN KEY (`PAIS`) REFERENCES `pais` (`ID_PAIS`),
   ADD CONSTRAINT `FK_PRODUCTORA` FOREIGN KEY (`PRODUCTORA`) REFERENCES `productora` (`ID_PRODUCTORA`),
   ADD CONSTRAINT `FK_RESOLUCION` FOREIGN KEY (`RESOLUCION`) REFERENCES `resolucion` (`ID_RESOLUCION`),
-  ADD CONSTRAINT `FK_SERVIDORES` FOREIGN KEY (`SERVIDORES`) REFERENCES `servidor` (`ID_SERVIDOR`),
   ADD CONSTRAINT `FK_USUARIO` FOREIGN KEY (`USUARIOLOG`) REFERENCES `usuarios` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
