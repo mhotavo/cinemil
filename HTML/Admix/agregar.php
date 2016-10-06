@@ -240,7 +240,6 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-warning" id="botonAgregar">Agregar Enlace</button>
-  <button type="button" class="btn btn-success">Guardar Enlaces</button>
 </div>
 </div>
 </div>
@@ -273,8 +272,7 @@
         var fuente=$( "#fuente").val();
         var enlace=$( "#enlace").val();
 
-        var nomServidor= $.get("../JSON/Servidor",{servidor:servidor}, function(data){
-          
+        var nomServidor= $.get("../JSON/Servidor",{servidor:servidor}, function(data){  
         });
         console.log(nomServidor);
         cont=cont+1;
