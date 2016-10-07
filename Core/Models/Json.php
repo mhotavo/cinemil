@@ -79,6 +79,14 @@ class Json {
 		return $datos;
 	}
 
+	public function nomFuente(){
+		$sql="SELECT NOM_FUENTE FROM fuente WHERE ID_FUENTE='$this->id' LIMIT 1 ";
+		$data = $this->db->consultaRetorno($sql);
+		$row = mysqli_fetch_assoc($data);
+		$datos= $row['NOM_FUENTE'];
+		return $datos;
+	}
+
 	public function servidor(){
 		$sql="SELECT * FROM servidor ORDER BY NOM_SERVIDOR ASC";
 		$data = $this->db->consultaRetorno($sql);

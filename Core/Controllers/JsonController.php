@@ -38,8 +38,14 @@ class JsonController{
 	}
 
 	public function Fuente(){
-		$datos=$this->Json->fuente();
-		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+		if (isset($_GET['fuente']) && !empty($_GET['fuente'])) {
+			$this->Json->__set('id', $_GET['fuente']);
+			$datos=$this->Json->nomFuente();
+			echo $datos;
+		} else {
+			$datos=$this->Json->fuente();
+			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );			
+		}
 	}
 
 	public function Servidor(){
@@ -51,9 +57,7 @@ class JsonController{
 			$datos=$this->Json->servidor();
 			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );			
 		}
-	}
-
-	
+	}	
 }
 
 $Salones= new JsonController();
