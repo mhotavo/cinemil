@@ -33,6 +33,16 @@ class Json {
 		return $datos;
 	}
 
+	public function calidad(){
+		$sql="SELECT * FROM calidad ORDER BY NOM_CALIDAD ASC";
+		$data = $this->db->consultaRetorno($sql);
+		while ($row = mysqli_fetch_assoc($data)) {
+			$datos[]=$row;
+		}
+		return $datos;
+	}
+
+
 	public function productora(){
 		$sql="SELECT * FROM productora ORDER BY NOM_PRODUCTORA ASC";
 		$data = $this->db->consultaRetorno($sql);
@@ -104,6 +114,18 @@ class Json {
 		$datos= $row['NOM_SERVIDOR'];
 		return $datos;
 	}
+
+
+	public function enlacesPelicula(){
+		$sql="SELECT * FROM enlace e LEFT JOIN servidor s ON (s.ID_SERVIDOR=e.ID_SERVIDOR) INNER JOIN fuente f ON (f.ID_FUENTE=e.ID_FUENTE) WHERE ID_PELICULA='$this->id' ";
+		$data = $this->db->consultaRetorno($sql);
+		while ($row = mysqli_fetch_assoc($data)) {
+			$datos[]=$row;
+		}
+		return $datos;
+	}
+
+
 } 
 
 

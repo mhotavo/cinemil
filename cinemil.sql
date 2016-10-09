@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2016 a las 23:41:52
+-- Tiempo de generación: 08-10-2016 a las 18:16:16
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -58,8 +58,16 @@ CREATE TABLE `enlace` (
   `TIPO_ENLACE` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `ID_PELICULA` int(11) NOT NULL,
   `ID_SERVIDOR` int(11) NOT NULL,
+  `ID_FUENTE` int(11) NOT NULL,
   `ENLACE` varchar(70) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `enlace`
+--
+
+INSERT INTO `enlace` (`ID_ENLACE`, `TIPO_ENLACE`, `ID_PELICULA`, `ID_SERVIDOR`, `ID_FUENTE`, `ENLACE`) VALUES
+(2, 'online', 1, 6, 6, 'aaa');
 
 -- --------------------------------------------------------
 
@@ -157,47 +165,50 @@ CREATE TABLE `logs` (
 --
 
 INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
-(1, '::1', 1, '2016-09-15 20:40:09'),
-(2, '::1', 1, '2016-09-15 20:40:13'),
-(3, '::1', 1, '2016-09-15 20:40:20'),
-(4, '::1', 1, '2016-09-15 20:40:29'),
-(5, '::1', 1, '2016-09-15 20:40:38'),
-(6, '::1', 1, '2016-09-15 20:40:46'),
-(7, '::1', 1, '2016-09-15 20:42:04'),
-(8, '::1', 1, '2016-09-15 20:42:05'),
-(9, '::1', 1, '2016-09-15 20:42:18'),
-(10, '::1', 1, '2016-09-15 20:42:40'),
-(11, '::1', 1, '2016-09-15 20:44:34'),
-(12, '::1', 1, '2016-09-15 20:45:04'),
-(13, '::1', 1, '2016-09-15 20:45:30'),
-(14, '::1', 1, '2016-09-15 20:46:26'),
-(15, '::1', 1, '2016-09-15 20:47:09'),
-(16, '::1', 1, '2016-09-15 20:47:30'),
-(17, '::1', 1, '2016-09-15 20:47:31'),
-(18, '::1', 1, '2016-09-15 20:47:33'),
-(19, '::1', 1, '2016-09-15 20:52:26'),
-(20, '::1', 1, '2016-09-15 20:52:27'),
-(21, '::1', 1, '2016-09-15 20:52:27'),
-(22, '::1', 1, '2016-09-15 20:52:27'),
-(23, '::1', 1, '2016-09-15 20:52:27'),
-(24, '::1', 1, '2016-09-15 20:52:28'),
-(25, '::1', 1, '2016-09-15 20:52:28'),
-(26, '::1', 1, '2016-09-15 20:52:28'),
-(27, '::1', 1, '2016-09-15 20:52:28'),
-(28, '::1', 1, '2016-09-15 20:52:28'),
-(29, '::1', 1, '2016-09-15 20:52:29'),
-(30, '::1', 1, '2016-09-15 20:52:29'),
-(31, '::1', 1, '2016-09-15 20:53:32'),
-(32, '::1', 1, '2016-09-18 15:09:15'),
-(33, '::1', 1, '2016-09-18 15:09:46'),
-(34, '::1', 1, '2016-09-18 15:12:11'),
-(35, '::1', 1, '2016-09-18 19:19:43'),
-(36, '::1', 1, '2016-09-19 20:25:08'),
-(37, '::1', 1, '2016-09-20 02:34:49'),
-(38, '::1', 1, '2016-09-20 02:41:59'),
-(39, '::1', 1, '2016-09-20 02:42:21'),
-(40, '::1', 1, '2016-09-20 14:33:36'),
-(41, '::1', 1, '2016-09-20 14:57:50');
+(1, '::1', 1, '2016-09-16 01:40:09'),
+(2, '::1', 1, '2016-09-16 01:40:13'),
+(3, '::1', 1, '2016-09-16 01:40:20'),
+(4, '::1', 1, '2016-09-16 01:40:29'),
+(5, '::1', 1, '2016-09-16 01:40:38'),
+(6, '::1', 1, '2016-09-16 01:40:46'),
+(7, '::1', 1, '2016-09-16 01:42:04'),
+(8, '::1', 1, '2016-09-16 01:42:05'),
+(9, '::1', 1, '2016-09-16 01:42:18'),
+(10, '::1', 1, '2016-09-16 01:42:40'),
+(11, '::1', 1, '2016-09-16 01:44:34'),
+(12, '::1', 1, '2016-09-16 01:45:04'),
+(13, '::1', 1, '2016-09-16 01:45:30'),
+(14, '::1', 1, '2016-09-16 01:46:26'),
+(15, '::1', 1, '2016-09-16 01:47:09'),
+(16, '::1', 1, '2016-09-16 01:47:30'),
+(17, '::1', 1, '2016-09-16 01:47:31'),
+(18, '::1', 1, '2016-09-16 01:47:33'),
+(19, '::1', 1, '2016-09-16 01:52:26'),
+(20, '::1', 1, '2016-09-16 01:52:27'),
+(21, '::1', 1, '2016-09-16 01:52:27'),
+(22, '::1', 1, '2016-09-16 01:52:27'),
+(23, '::1', 1, '2016-09-16 01:52:27'),
+(24, '::1', 1, '2016-09-16 01:52:28'),
+(25, '::1', 1, '2016-09-16 01:52:28'),
+(26, '::1', 1, '2016-09-16 01:52:28'),
+(27, '::1', 1, '2016-09-16 01:52:28'),
+(28, '::1', 1, '2016-09-16 01:52:28'),
+(29, '::1', 1, '2016-09-16 01:52:29'),
+(30, '::1', 1, '2016-09-16 01:52:29'),
+(31, '::1', 1, '2016-09-16 01:53:32'),
+(32, '::1', 1, '2016-09-18 20:09:15'),
+(33, '::1', 1, '2016-09-18 20:09:46'),
+(34, '::1', 1, '2016-09-18 20:12:11'),
+(35, '::1', 1, '2016-09-19 00:19:43'),
+(36, '::1', 1, '2016-09-20 01:25:08'),
+(37, '::1', 1, '2016-09-20 07:34:49'),
+(38, '::1', 1, '2016-09-20 07:41:59'),
+(39, '::1', 1, '2016-09-20 07:42:21'),
+(40, '::1', 1, '2016-09-20 19:33:36'),
+(41, '::1', 1, '2016-09-20 19:57:50'),
+(42, '::1', 1, '2016-10-06 21:42:06'),
+(43, '::1', 1, '2016-10-07 19:49:55'),
+(44, '::1', 1, '2016-10-08 13:49:33');
 
 -- --------------------------------------------------------
 
@@ -248,15 +259,21 @@ CREATE TABLE `pelicula` (
   `PESO` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `RESOLUCION` int(11) DEFAULT NULL,
   `TRAILER` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `PORTADA` int(100) NOT NULL,
+  `PORTADA` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `CAPTURAS` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CLASIFICACION` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `VALORACION` int(5) DEFAULT NULL,
-  `ENLACES` int(11) NOT NULL,
-  `FUENTE` int(11) NOT NULL,
+  `FECHA_INGRESO` date DEFAULT NULL,
   `USUARIOLOG` bigint(255) NOT NULL,
   `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pelicula`
+--
+
+INSERT INTO `pelicula` (`ID`, `TITULO_OFICIAL`, `TITULO_LATINO`, `DIRECTOR`, `REPARTO`, `PRODUCTORA`, `SINOPSIS`, `GENERO`, `PAIS`, `DURACION`, `FECHA_ESTRENO`, `IDIOMA`, `SUBTITULOS`, `CALIDAD`, `PESO`, `RESOLUCION`, `TRAILER`, `PORTADA`, `CAPTURAS`, `CLASIFICACION`, `VALORACION`, `FECHA_INGRESO`, `USUARIOLOG`, `FECHALOG`) VALUES
+(1, 'Kung Fu Panda 3 (2016)', 'Kung Fu Panda 3 (2016)', 'Jennifer Yuh Nelson, Alessandr', 'reparto', 29, 'sinpsis', 3, 1, '95', '2016-01-26', 1, 'No', 6, '0', 0, 'https://youtu.be/hmRLBgMTaXA', 'http://www.elseptimoarte.net/carteles/kung_fu_panda_3_47907.jpg', '', 'Mayores de 12 años', 8, '2016-10-03', 1, '2016-10-08 15:15:21');
 
 -- --------------------------------------------------------
 
@@ -396,7 +413,8 @@ ALTER TABLE `calidad`
 ALTER TABLE `enlace`
   ADD PRIMARY KEY (`ID_ENLACE`),
   ADD KEY `ID_PELICULA` (`ID_PELICULA`),
-  ADD KEY `ID_SERVIDOR` (`ID_SERVIDOR`);
+  ADD KEY `ID_SERVIDOR` (`ID_SERVIDOR`),
+  ADD KEY `ID_FUENTE` (`ID_FUENTE`);
 
 --
 -- Indices de la tabla `fuente`
@@ -441,8 +459,6 @@ ALTER TABLE `pelicula`
   ADD KEY `FK_IDIOMA` (`IDIOMA`),
   ADD KEY `FK_CALIDAD` (`CALIDAD`),
   ADD KEY `FK_RESOLUCION` (`RESOLUCION`),
-  ADD KEY `ENLACES` (`ENLACES`,`FUENTE`),
-  ADD KEY `FK_FUENTE` (`FUENTE`),
   ADD KEY `FK_USUARIO` (`USUARIOLOG`);
 
 --
@@ -482,7 +498,7 @@ ALTER TABLE `calidad`
 -- AUTO_INCREMENT de la tabla `enlace`
 --
 ALTER TABLE `enlace`
-  MODIFY `ID_ENLACE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ENLACE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `fuente`
 --
@@ -502,7 +518,7 @@ ALTER TABLE `idioma`
 -- AUTO_INCREMENT de la tabla `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `pais`
 --
@@ -532,7 +548,7 @@ ALTER TABLE `servidor`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
@@ -541,6 +557,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `enlace`
 --
 ALTER TABLE `enlace`
+  ADD CONSTRAINT `FK_FUENTE` FOREIGN KEY (`ID_FUENTE`) REFERENCES `fuente` (`ID_FUENTE`),
   ADD CONSTRAINT `FK_PELICULA` FOREIGN KEY (`ID_PELICULA`) REFERENCES `pelicula` (`ID`),
   ADD CONSTRAINT `FK_SERVIDOR` FOREIGN KEY (`ID_SERVIDOR`) REFERENCES `servidor` (`ID_SERVIDOR`);
 
@@ -550,12 +567,9 @@ ALTER TABLE `enlace`
 ALTER TABLE `pelicula`
   ADD CONSTRAINT `FK_CALIDAD` FOREIGN KEY (`CALIDAD`) REFERENCES `calidad` (`ID_CALIDAD`),
   ADD CONSTRAINT `FK_CATEGORIA` FOREIGN KEY (`GENERO`) REFERENCES `genero` (`ID_GENERO`),
-  ADD CONSTRAINT `FK_ENLACES` FOREIGN KEY (`ENLACES`) REFERENCES `enlace` (`ID_ENLACE`),
-  ADD CONSTRAINT `FK_FUENTE` FOREIGN KEY (`FUENTE`) REFERENCES `fuente` (`ID_FUENTE`),
   ADD CONSTRAINT `FK_IDIOMA` FOREIGN KEY (`IDIOMA`) REFERENCES `idioma` (`ID_IDIOMA`),
   ADD CONSTRAINT `FK_PAIS` FOREIGN KEY (`PAIS`) REFERENCES `pais` (`ID_PAIS`),
   ADD CONSTRAINT `FK_PRODUCTORA` FOREIGN KEY (`PRODUCTORA`) REFERENCES `productora` (`ID_PRODUCTORA`),
-  ADD CONSTRAINT `FK_RESOLUCION` FOREIGN KEY (`RESOLUCION`) REFERENCES `resolucion` (`ID_RESOLUCION`),
   ADD CONSTRAINT `FK_USUARIO` FOREIGN KEY (`USUARIOLOG`) REFERENCES `usuarios` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

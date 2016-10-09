@@ -1,74 +1,74 @@
   <html>
   <head>
-  	<?php include(HTML_DIR.'/overall/headerPanel.php') ?>
+    <?php include(HTML_DIR.'/overall/headerPanel.php') ?>
   </head>
   <body>
-  	<?php include(HTML_DIR.'/overall/navPanel.php') ?>
-  	<div class="container">
-  		<h3 align="center">Nueva Película</h3>
-  		<br>
-     <div class="col-md-2"></div>
-     <div class="col-md-8">
-      <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="agregar">
-       <fieldset>
+    <?php include(HTML_DIR.'/overall/navPanel.php') ?>
+    <div class="container">
+      <h3 align="center">Nueva Película</h3>
+      <br>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="agregar">
+         <fieldset>
+          <div class="form-group">
+           <label for="tituloOficial" class="col-lg-2 control-label">Título Oficial</label>
+           <div class="col-lg-10">
+             <input type="text" class="form-control" name="tituloOficial" id="tituloOficial" placeholder="Título Oficial" value="<?php echo $datos['TITULO_OFICIAL']; ?>" required>
+           </div>
+         </div>  
+         <div class="form-group">
+           <label for="tituloLatino" class="col-lg-2 control-label">Título Latino</label>
+           <div class="col-lg-10">
+            <input type="text" class="form-control" name="tituloLatino" id="tituloLatino" placeholder="Título Latino" value="<?php echo $datos['TITULO_LATINO']; ?>" required>
+          </div>
+        </div>    
         <div class="form-group">
-         <label for="tituloOficial" class="col-lg-2 control-label">Título Oficial</label>
+         <label for="director" class="col-lg-2 control-label">Director</label>
          <div class="col-lg-10">
-          <input type="text" class="form-control" name="tituloOficial" id="tituloOficial" placeholder="Título Oficial" required>
+          <input type="text" class="form-control" name="director" id="director" placeholder="Director" value="<?php echo $datos['DIRECTOR']; ?>" required>
         </div>
-      </div>	
+      </div>  
+
       <div class="form-group">
-       <label for="tituloLatino" class="col-lg-2 control-label">Título Latino</label>
+       <label for="fechaEstreno" class="col-lg-2 control-label">Fecha de Estreno</label>
        <div class="col-lg-10">
-        <input type="text" class="form-control" name="tituloLatino" id="tituloLatino" placeholder="Título Latino" required>
+        <input type="date" class="form-control"  name="fechaEstreno" id="fechaEstreno" value="<?php echo $datos['FECHA_ESTRENO']; ?>" required>
       </div>
-    </div>		
-    <div class="form-group">
-     <label for="director" class="col-lg-2 control-label">Director</label>
-     <div class="col-lg-10">
-      <input type="text" class="form-control" name="director" id="director" placeholder="Director" required>
     </div>
-  </div>	
 
+    <div class="form-group">
+     <label for="duracion" class="col-lg-2 control-label">Duración</label>
+     <div class="col-lg-10">
+      <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duración" value="<?php echo $datos['DURACION']; ?>" required>
+    </div>
+  </div>  
   <div class="form-group">
-   <label for="fechaEstreno" class="col-lg-2 control-label">Fecha de Estreno</label>
+   <label for="peso" class="col-lg-2 control-label">Peso (Mb)</label>
    <div class="col-lg-10">
-    <input type="date" class="form-control"  name="fechaEstreno" id="fechaEstreno" required>
+    <input type="text" class="form-control" name="peso" id="peso" placeholder="Peso" required value="<?php echo $datos['PESO']; ?>">
   </div>
-</div>
-
-<div class="form-group">
- <label for="duracion" class="col-lg-2 control-label">Duración</label>
- <div class="col-lg-10">
-  <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duración" >
-</div>
-</div>	
-<div class="form-group">
- <label for="peso" class="col-lg-2 control-label">Peso (Mb)</label>
- <div class="col-lg-10">
-  <input type="text" class="form-control" name="peso" id="peso" placeholder="Peso" >
-</div>
-</div>	
+</div>  
 
 <div class="form-group">
   <label for="resolucion" class="col-lg-2 control-label">Resolución(Px)</label>
   <div class="col-lg-10">
-    <input type="text" class="form-control" name="resolucion" id="resolucion" placeholder="Resolución" >
+    <input type="text" class="form-control" name="resolucion" id="resolucion" placeholder="Resolución" required value="<?php echo $datos['RESOLUCION']; ?>">
   </div>
 </div>  
 <div class="form-group">
  <label for="trailer" class="col-lg-2 control-label">Trailer</label>
  <div class="col-lg-10">
-  <input type="text" class="form-control" name="trailer" id="trailer" placeholder="URL Youtube" >
+  <input type="text" class="form-control" name="trailer" id="trailer" placeholder="URL Youtube" value="<?php echo $datos['TRAILER']; ?>" required>
 </div>
-</div>	
+</div>  
 
 <div class="form-group">
  <label for="portada" class="col-lg-2 control-label">Portada</label>
  <div class="col-lg-10">
-  <input type="text" class="form-control" name="portada" id="portada" placeholder="URL Imagen" >
+  <input type="text" class="form-control" name="portada" id="portada" placeholder="URL Imagen" required value="<?php echo $datos['PORTADA']; ?>">
 </div>
-</div>	
+</div>  
 <div class="form-group">
  <label for="productora" class="col-lg-2 control-label">Productora</label>
  <div class="col-lg-10">
@@ -120,20 +120,20 @@
 <div class="form-group">
  <label for="clasificacion" class="col-lg-2 control-label">Clasificación</label>
  <div class="col-lg-10">
-   <input type="text" class="form-control" name="clasificacion" id="clasificacion" placeholder="Clasificación" >
+   <input type="text" class="form-control" name="clasificacion" id="clasificacion" placeholder="Clasificación" required value="<?php echo $datos['CLASIFICACION']; ?>">
  </div>
 </div>
 
 <div class="form-group">
  <label for="valoracion" class="col-lg-2 control-label">Valoración</label>
  <div class="col-lg-10">
- <input type="number" class="form-control" name="valoracion" id="valoracion" placeholder="Valoración" >
+   <input type="number" class="form-control" name="valoracion" id="valoracion" placeholder="Valoración" required value="<?php echo $datos['VALORACION']; ?>">
  </div>
 </div>
 <div class="form-group">
  <label for="reparto" class="col-lg-2 control-label">Reparto</label>
  <div class="col-lg-10">
-  <textarea class="form-control" rows="3" name="reparto"></textarea>
+  <textarea class="form-control" rows="3" name="reparto"><?php echo $datos['REPARTO']; ?></textarea>
 
 </div>
 </div>
@@ -141,7 +141,7 @@
 <div class="form-group">
  <label for="sinopsis" class="col-lg-2 control-label">Sinopsis</label>
  <div class="col-lg-10">
-  <textarea class="form-control" rows="3" name="sinopsis"></textarea>
+  <textarea class="form-control" rows="3" name="sinopsis"><?php echo $datos['SINOPSIS']; ?></textarea>
 
 </div>
 </div>
@@ -155,7 +155,7 @@
 <div class="form-group">
  <label for="fechaIngreso" class="col-lg-2 control-label">Fecha de ingreso</label>
  <div class="col-lg-10">
-  <input type="date" class="form-control" name="fechaIngreso" value="<?php echo date("Y-m-d"); ?>" >
+  <input type="date" class="form-control" name="fechaIngreso" value="<?php echo $datos['FECHA_INGRESO']; ?>"  readonly>
 </div>
 </div>
 <div class="form-group">
@@ -163,17 +163,17 @@
   <div class="col-lg-10">
     <div class="radio">
      <label>
-      <input type="radio" name="subtitulada" id="optionsRadios1" value="Si" >
+      <input type="radio" name="subtitulada" id="optionsRadios1" value="Si" <?php echo ($datos['SUBTITULOS']=='Si') ? 'checked' : null ?> >
       Si
     </label>
 
     <label>
-      <input type="radio" name="subtitulada" id="optionsRadios2" value="No" checked="">
+      <input type="radio" name="subtitulada" id="optionsRadios2" value="No" <?php echo ($datos['SUBTITULOS']=='No') ? 'checked' : null ?>>
       No
     </label>
   </div>
 </div>
-</div>		 
+</div>     
 <div class="form-group">
   <label for="clasificacion" class="col-lg-2 control-label">Enlaces: </label>
   <div class="col-lg-10">
@@ -233,11 +233,15 @@
   $(document).ready(function(){
     cargarFuentes();
     cargarServidores();
-    cargarProductoras();
-    cargarGeneros();
-    cargarPaises();
-    cargarIdiomas();
-    cargarCalidad();
+    cargarProductoras(<?php echo $datos['PRODUCTORA']; ?>);
+    cargarGeneros(<?php echo $datos['GENERO']; ?>);
+    cargarPaises(<?php echo $datos['PAIS']; ?>);
+    cargarIdiomas(<?php echo $datos['IDIOMA']; ?>);
+    cargarCalidad(<?php echo $datos['CALIDAD']; ?>);
+    cargarEnlaces(<?php echo $datos['ID']; ?>);
+
+
+
     $("#enlacesTabla").css("font-size", "13px");
     $("#ModalEnlaces").css("font-size", "13px");
       //Agregar nuevo enlace
@@ -262,22 +266,7 @@
           });
         });
         
-
       });
-
-      //Ejemplo
-      $( "#tituloOficial").val("Kung Fu Panda 3 (2016)");
-      $( "#tituloLatino").val("Kung Fu Panda 3 (2016)");
-      $( "#director").val("Jennifer Yuh Nelson, Alessandro Carloni");
-      $( "#fechaEstreno").val("2016-01-26");
-      $( "#duracion").val("95");
-      $( "#peso").val("0");
-      $( "#resolucion").val("0");
-      $( "#trailer").val("https://youtu.be/hmRLBgMTaXA");
-      $( "#portada").val("http://www.elseptimoarte.net/carteles/kung_fu_panda_3_47907.jpg");
-      $( "#valoracion").val("8");
-      $( "#clasificacion").val("Mayores de 12 años");
-
 
     }); 
 

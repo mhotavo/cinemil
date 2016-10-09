@@ -11,33 +11,38 @@ class JsonController{
 
 	}
 
-	public function Categoria(){
+	public function categoria(){
 		$datos=$this->Json->categoria();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
-	public function Productora(){
+	public function productora(){
 		$datos=$this->Json->productora();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
 
-	public function Genero(){
+	public function genero(){
 		$datos=$this->Json->genero();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
-	public function Pais(){
+	public function pais(){
 		$datos=$this->Json->pais();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
-	public function Idioma(){
+	public function calidad(){
+		$datos=$this->Json->calidad();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function idioma(){
 		$datos=$this->Json->idioma();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
-	public function Fuente(){
+	public function fuente(){
 		if (isset($_GET['fuente']) && !empty($_GET['fuente'])) {
 			$this->Json->__set('id', $_GET['fuente']);
 			$datos=$this->Json->nomFuente();
@@ -48,7 +53,7 @@ class JsonController{
 		}
 	}
 
-	public function Servidor(){
+	public function servidor(){
 		if (isset($_GET['servidor']) && !empty($_GET['servidor'])) {
 			$this->Json->__set('id', $_GET['servidor']);
 			$datos=$this->Json->nomServidor();
@@ -56,6 +61,16 @@ class JsonController{
 		} else {
 			$datos=$this->Json->servidor();
 			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );			
+		}
+	}
+
+	public function enlaces(){
+		if (isset($_GET['id']) && !empty($_GET['id'])) {
+			$this->Json->__set('id', $_GET['id']);
+			$datos=$this->Json->enlacesPelicula();
+			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );	
+		} else {
+			echo "Ha sucedido un error (O.o) "	;
 		}
 	}	
 }
